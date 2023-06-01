@@ -58,7 +58,7 @@ public:
         return  street;
     }*/
 
-    void setout_sort(location* arr, int size) {  
+    void setout_sort(location* loc_in_array, int size) {
 
         location temp;
 
@@ -73,20 +73,20 @@ public:
         {
             for (int j = 0; j < size - 1; j++)
             {
-                if (arr[j].city > arr[j + 1].city)     
+                if (loc_in_array[j].city > loc_in_array[j + 1].city)
                 {
-                    temp.city = arr[j].city;
-                    temp.street = arr[j].street;
-                    temp.house = arr[j].house;
-                    temp.apartment = arr[j].apartment;
-                    arr[j].city = arr[j + 1].city;
-                    arr[j].street = arr[j + 1].street;
-                    arr[j].house = arr[j + 1].house;
-                    arr[j].apartment = arr[j + 1].apartment;
-                    arr[j + 1].city = temp.city;
-                    arr[j + 1].street = temp.street;
-                    arr[j + 1].house = temp.house;
-                    arr[j + 1].apartment = temp.apartment;
+                    temp.city = loc_in_array[j].city;
+                    temp.street = loc_in_array[j].street;
+                    temp.house = loc_in_array[j].house;
+                    temp.apartment = loc_in_array[j].apartment;
+                    loc_in_array[j].city = loc_in_array[j + 1].city;
+                    loc_in_array[j].street = loc_in_array[j + 1].street;
+                    loc_in_array[j].house = loc_in_array[j + 1].house;
+                    loc_in_array[j].apartment = loc_in_array[j + 1].apartment;
+                    loc_in_array[j + 1].city = temp.city;
+                    loc_in_array[j + 1].street = temp.street;
+                    loc_in_array[j + 1].house = temp.house;
+                    loc_in_array[j + 1].apartment = temp.apartment;
                 }
             }
         }
@@ -95,8 +95,8 @@ public:
 
         for (int i = 0; i < size; i++) {
 
-            rf << arr[i].city + ",  " + arr[i].street + ",  "
-                + arr[i].house + ",  " + arr[i].apartment + "\n";
+            rf << loc_in_array[i].city + ",  " + loc_in_array[i].street + ",  "
+                + loc_in_array[i].house + ",  " + loc_in_array[i].apartment + "\n";
 
         }
 
@@ -104,18 +104,18 @@ public:
     }   
 
 
-    void print_array(location* arr, int size) {
+    void print_array(location* loc_in_array, int size) {
         std::cout << size << std::endl;
         for (int i = 0; i < size; ++i) {
             std::cout
-                << arr[i].city << std::endl
-                << arr[i].street << std::endl
-                << arr[i].house << std::endl
-                << arr[i].apartment << std::endl;
+                << loc_in_array[i].city << std::endl
+                << loc_in_array[i].street << std::endl
+                << loc_in_array[i].house << std::endl
+                << loc_in_array[i].apartment << std::endl;
             std::cout << std::endl;
         }
 
-    }
+    }    
 
 };
 
@@ -133,6 +133,7 @@ int main()
     SetConsoleOutputCP(1251);
 
     location in(" ", " ", " ", " ");
+    
    
     int size;
     std::string city;
@@ -159,12 +160,12 @@ int main()
 
     }
 
-    wf1.close();
+    wf1.close();    
+    
+    in.print_array(loc_in_array, size); 
 
-    in.print_array(loc_in_array, size);
-
-    in.setout_sort(loc_in_array, size);    
-
+    in.setout_sort(loc_in_array, size); 
+    
     delete[] loc_in_array;
 
     return 0;
